@@ -4,7 +4,6 @@ import java.util.List;
 
 import io.amecodelabs.adapter.CashEuros;
 import io.amecodelabs.adapter.ConversorPesos;
-import io.amecodelabs.adapter.ForeignExchange;
 import io.amecodelabs.adapter.IConversor;
 import io.amecodelabs.adapter.Register;
 
@@ -24,11 +23,17 @@ public class Principal {
        
        System.out.println("Saldo Total: "+conversor.totalAmount());
        
-       List<Register> historic = conversor.historial();
+       getInforme(conversor);
+       
+	   
+   }
+   
+   public static void getInforme(IConversor conversor) {
+	   System.out.println("====Historial====");
+	   List<Register> historic = conversor.historial();
        historic.forEach((index) -> {
            System.out.println(index.toString());
        });
-	   
    }
    
 }

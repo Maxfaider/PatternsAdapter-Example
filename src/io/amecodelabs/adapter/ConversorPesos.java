@@ -45,8 +45,11 @@ public class ConversorPesos implements IConversor<Register> {
 	public String totalAmount() {
 		BigDecimal pesos = ForeignExchange.
 				callService(this.caja.getAmount(), "EvP");
+		
+	    Locale locale = new Locale("es","CO"); 
+	    NumberFormat nf = NumberFormat.getCurrencyInstance(locale);
 
-		return pesos.toString();
+		return nf.format(pesos.doubleValue());
 	}
 	
 }
