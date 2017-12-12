@@ -23,16 +23,14 @@ public class CashEuros {
     
     public void addEuros(BigDecimal amount, String subject) {
         this.amount = this.amount.add(amount);
-        
-        LocalDate date = LocalDate.now();
-        addhistoric(new Register(subject, date.toString(), 
-        		amount.toString()));
+        addhistoric(Register.createRegister(subject, amount.toString()));
     }
     
     public boolean extractEuros(BigDecimal amount) {
         
     	if(this.amount.compareTo(amount) >= 0) {
     		this.amount = this.amount.subtract(amount);
+    		addhistoric(Register.createRegister("Retiro", amount.toString()));
     		return true;
     	}
     	return false;

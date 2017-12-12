@@ -4,6 +4,7 @@ import java.util.List;
 
 import io.amecodelabs.adapter.CashEuros;
 import io.amecodelabs.adapter.ConversorPesos;
+import io.amecodelabs.adapter.ForeignExchange;
 import io.amecodelabs.adapter.IConversor;
 import io.amecodelabs.adapter.Register;
 

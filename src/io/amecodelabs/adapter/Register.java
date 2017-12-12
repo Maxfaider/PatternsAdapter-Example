@@ -1,6 +1,8 @@
 
 package io.amecodelabs.adapter;
 
+import java.time.LocalDate;
+
 /**
  *
  * @author Alan M.E
@@ -12,35 +14,28 @@ public class Register {
     private String date;
     private String deposit;
     
-    public Register(String subject, String date, String deposit) {
+    private Register(String subject, String date, String deposit) {
         this.subject = subject;
         this.date = date;
         this.deposit = deposit;
+    }
+    
+    public static Register createRegister(String subject, String deposit) {
+    	LocalDate date = LocalDate.now();
+    	return new Register(subject, date.toString(), deposit);
     }
 
     public String getSubject() {
         return subject;
     }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
+    
     public String getDate() {
         return date;
     }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
+    
     public String getDeposit() {
         return deposit;
     }
-
-    public void setdeposit(String deposit) {
-        this.deposit = deposit;
-    }  
     
     @Override
     public String toString() {

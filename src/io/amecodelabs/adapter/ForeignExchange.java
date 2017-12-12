@@ -1,5 +1,7 @@
 package io.amecodelabs.adapter;
 
+import java.math.BigDecimal;
+
 /**
  * Supogamos que es un servicio que nos manda el valor actual del Euro.
  * 
@@ -8,12 +10,23 @@ package io.amecodelabs.adapter;
  */
 public class ForeignExchange {
 	
+	private static final double euroNow = 3182.00;
+	
 	/**
 	 * 
-	 * @return Euro now
+	 * @return divisa
 	 */
-	public static double callService() {
-		return 3182.00;
+	public static BigDecimal callService(String value, String change) {
+		double valueEuro = Double.valueOf(value);
+		
+		if(change.equals("PvE")) {
+			valueEuro/= euroNow;
+		} else {
+		    valueEuro*= euroNow;
+		}
+		
+		return new BigDecimal(valueEuro).
+				setScale(2, BigDecimal.ROUND_DOWN);
 	}
 
 }
